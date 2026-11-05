@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>病毒組教學成效儀表板</title>
-<!-- 病毒組教學成效儀表板 v3.9.3（2026-11-05 阿岸；v3.9.1：右下角按鈕改成整張病毒組 logo（約 2×2 公分）；v3.9：CPE 分成驗證期、導入期兩張圖，PGY 與代訓另外用文字列出，點驗證期的身分會跳出測試重點；流程圖改成可收合；問卷可勾選合併或分開，偏好結果做成大字海報；操作考加人數說明；票選預設只顯示病毒組，要看全部請按右下角的小鴨；右下角兩個開關：滑鼠特效（預設關）、動畫（預設開）；v3.8：學生回饋改成便利貼牆（顏色角度輪流、「病毒」用螢光筆標出、滑過扶正）；v3.7：「現場教學」統一改為「傳統教學方式」；v3.6：加入小C 畫的兩張教學流程圖（第一、二張圖表之間），說明文字裡的流程改成跳到流程圖的按鈕；v3.5：修正檔頭說明跑到畫面上；v3.4：說明文字裡的教學流程（箭頭）自動畫成彩色步驟卡；v3.3：限制說明改成分梯次，文字放在 Excel「說明文字」的「梯次說明_梯次名稱」；v3.2：說明文字加 !!螢光筆!! 記號；v3.1：偏好圖長名稱換行、說明文字可用 **粗體** ==粉紅== ++放大++；v3：數字跳動、圖表進場動畫、點獎盃灑花瓣、星星滑鼠尾巴（左下角開關）；v2：PinkDuckLab 入口按鈕、品牌配色、操作考百分制、p 值公式、全選／全不選、10 題測驗設計說明、身分顯示名稱）
+<!-- 病毒組教學成效儀表板 v3.9.4（2026-11-06 阿岸；v3.9.4：手機上總覽的年度時間軸被切掉、不能滑 → 改成可以左右滑，左欄固定、手機變窄，加滑動提示；v3.9.3 阿岸併回阿澈在 GitHub 上的改動；v3.9.3（阿澈）：PinkDuckLab 入口移到右下、小鴨與兩個開關移到標題列右上；v3.9.2（阿澈）：左下角 QR、動畫一律預設開；v3.9.1：右下角按鈕改成整張病毒組 logo（約 2×2 公分）；v3.9：CPE 分成驗證期、導入期兩張圖，PGY 與代訓另外用文字列出，點驗證期的身分會跳出測試重點；流程圖改成可收合；問卷可勾選合併或分開，偏好結果做成大字海報；操作考加人數說明；票選預設只顯示病毒組，要看全部請按右下角的小鴨；右下角兩個開關：滑鼠特效（預設關）、動畫（預設開）；v3.8：學生回饋改成便利貼牆（顏色角度輪流、「病毒」用螢光筆標出、滑過扶正）；v3.7：「現場教學」統一改為「傳統教學方式」；v3.6：加入小C 畫的兩張教學流程圖（第一、二張圖表之間），說明文字裡的流程改成跳到流程圖的按鈕；v3.5：修正檔頭說明跑到畫面上；v3.4：說明文字裡的教學流程（箭頭）自動畫成彩色步驟卡；v3.3：限制說明改成分梯次，文字放在 Excel「說明文字」的「梯次說明_梯次名稱」；v3.2：說明文字加 !!螢光筆!! 記號；v3.1：偏好圖長名稱換行、說明文字可用 **粗體** ==粉紅== ++放大++；v3：數字跳動、圖表進場動畫、點獎盃灑花瓣、星星滑鼠尾巴（左下角開關）；v2：PinkDuckLab 入口按鈕、品牌配色、操作考百分制、p 值公式、全選／全不選、10 題測驗設計說明、身分顯示名稱）
      資料來自同資料夾的「儀表板資料.xlsx」，經「更新儀表板_雙擊我.bat」轉成 程式/data.js。
      圖表全部由本檔自行繪製，不需要網路。 -->
 <script>
@@ -92,7 +92,9 @@ svg text{font-family:inherit}
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .legend i{width:12px;height:12px;border-radius:50%;display:inline-block}
 .note{font-size:14px;color:var(--muted);margin-top:6px}
-.tl{display:grid;gap:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.tl{display:grid;gap:0;border-radius:14px;overflow:clip;border:1px solid var(--line);min-width:max-content}
+.tlhint{display:none;font-size:13.5px;color:var(--muted);margin:0 0 6px}
+@media (max-width:620px){.tl{--tlc1:118px}.tl .h.first,.tl .rh{position:sticky;left:0;z-index:1}.tl .rh{font-size:14px;padding:10px 8px;box-shadow:2px 0 4px rgba(226,85,138,.10)}.tlhint{display:block}}
 .tl .h{background:var(--pink);color:#fff;font-weight:700;padding:10px 12px;text-align:center}
 .tl .h.first{text-align:left}
 .tl .rh{background:var(--pink-xl);font-weight:700;padding:12px;display:flex;align-items:center;gap:8px}
@@ -688,8 +690,8 @@ function renderHome(){
   const cpeBySy = {}; batches.forEach(b => { const bi = batchInfo(b); (cpeBySy[bi.sy] = cpeBySy[bi.sy] || []).push(b); });
   const years = uniq([...opsStat.map(s => s.sy), ...voteYears, ...Object.keys(cpeBySy).map(Number)]).sort((a, b) => a - b);
   const firstCpeSy = Math.min(...Object.keys(cpeBySy).map(Number));
-  const cols = `grid-template-columns:200px repeat(${years.length},minmax(130px,1fr))`;
-  let tl = `<div class="tscroll"><div class="tl" style="${cols}"><div class="h first">學年</div>${years.map(y => `<div class="h">${y} 學年<br><small style="font-weight:400">${y + 1911} 年</small></div>`).join("")}`;
+  const cols = `grid-template-columns:var(--tlc1,200px) repeat(${years.length},minmax(130px,1fr))`;
+  let tl = `<div class="tlhint">👉 左右滑動看其他學年</div><div class="tscroll"><div class="tl" style="${cols}"><div class="h first">學年</div>${years.map(y => `<div class="h">${y} 學年<br><small style="font-weight:400">${y + 1911} 年</small></div>`).join("")}`;
   tl += `<div class="rh">🧠 CPE 判讀小工具</div>` + years.map(y => { const bs = cpeBySy[y]; if (!bs) return `<div class="c empty">${y < firstCpeSy ? "尚未導入" : "—"}</div>`;
     return `<div class="c">${bs.map(b => { const rs = cpeRows.filter(r => r["梯次"] === b); const p0 = mean(rs.map(r => r.pre / r.q)), p1 = mean(rs.map(r => r.post / r.q));
       return `<b>${Math.round(p0 * 100)}% → ${Math.round(p1 * 100)}%</b>${esc(b)}｜${rs.length} 位`; }).join("<hr style='border:0;border-top:1px dashed #f0d5df'>")}</div>`; }).join("");
@@ -1009,7 +1011,7 @@ $("#tabs").addEventListener("click", e => { const b = e.target.closest("button")
 window.addEventListener("hashchange", () => show(location.hash.slice(1)));
 
 $("#sub").textContent = `資料更新：${D["產生時間"] || "—"}`;
-$("#foot").innerHTML = `病毒組教學成效儀表板 v3.9.3｜數字由「儀表板資料.xlsx」自動計算｜個人資料一律以研究代號呈現`;
+$("#foot").innerHTML = `病毒組教學成效儀表板 v3.9.4｜數字由「儀表板資料.xlsx」自動計算｜個人資料一律以研究代號呈現`;
 renderHome(); renderCPE(); renderOps(); renderVote();
 show(location.hash.slice(1) || "home");
 </script>
@@ -1055,6 +1057,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
 (() => {
   const box = document.getElementById("pdlQr");
   if (!box || typeof qrcode !== "function") return;   // 畫不出來就整個不顯示，不連外部服務
+  if (!/^https?:$/.test(location.protocol)) return;   // 阿岸併回時加：本機雙擊打開（file://）沒有網址可給，不顯示
   const url = location.href.split("#")[0];            // 不帶分頁 #，掃了從首頁開始
   let svg;
   try {
