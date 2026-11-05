@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>病毒組教學成效儀表板</title>
-<!-- 病毒組教學成效儀表板 v3.9.2（2026-11-05 阿岸；v3.9.1：右下角按鈕改成整張病毒組 logo（約 2×2 公分）；v3.9：CPE 分成驗證期、導入期兩張圖，PGY 與代訓另外用文字列出，點驗證期的身分會跳出測試重點；流程圖改成可收合；問卷可勾選合併或分開，偏好結果做成大字海報；操作考加人數說明；票選預設只顯示病毒組，要看全部請按右下角的小鴨；右下角兩個開關：滑鼠特效（預設關）、動畫（預設開）；v3.8：學生回饋改成便利貼牆（顏色角度輪流、「病毒」用螢光筆標出、滑過扶正）；v3.7：「現場教學」統一改為「傳統教學方式」；v3.6：加入小C 畫的兩張教學流程圖（第一、二張圖表之間），說明文字裡的流程改成跳到流程圖的按鈕；v3.5：修正檔頭說明跑到畫面上；v3.4：說明文字裡的教學流程（箭頭）自動畫成彩色步驟卡；v3.3：限制說明改成分梯次，文字放在 Excel「說明文字」的「梯次說明_梯次名稱」；v3.2：說明文字加 !!螢光筆!! 記號；v3.1：偏好圖長名稱換行、說明文字可用 **粗體** ==粉紅== ++放大++；v3：數字跳動、圖表進場動畫、點獎盃灑花瓣、星星滑鼠尾巴（左下角開關）；v2：PinkDuckLab 入口按鈕、品牌配色、操作考百分制、p 值公式、全選／全不選、10 題測驗設計說明、身分顯示名稱）
+<!-- 病毒組教學成效儀表板 v3.9.3（2026-11-05 阿岸；v3.9.1：右下角按鈕改成整張病毒組 logo（約 2×2 公分）；v3.9：CPE 分成驗證期、導入期兩張圖，PGY 與代訓另外用文字列出，點驗證期的身分會跳出測試重點；流程圖改成可收合；問卷可勾選合併或分開，偏好結果做成大字海報；操作考加人數說明；票選預設只顯示病毒組，要看全部請按右下角的小鴨；右下角兩個開關：滑鼠特效（預設關）、動畫（預設開）；v3.8：學生回饋改成便利貼牆（顏色角度輪流、「病毒」用螢光筆標出、滑過扶正）；v3.7：「現場教學」統一改為「傳統教學方式」；v3.6：加入小C 畫的兩張教學流程圖（第一、二張圖表之間），說明文字裡的流程改成跳到流程圖的按鈕；v3.5：修正檔頭說明跑到畫面上；v3.4：說明文字裡的教學流程（箭頭）自動畫成彩色步驟卡；v3.3：限制說明改成分梯次，文字放在 Excel「說明文字」的「梯次說明_梯次名稱」；v3.2：說明文字加 !!螢光筆!! 記號；v3.1：偏好圖長名稱換行、說明文字可用 **粗體** ==粉紅== ++放大++；v3：數字跳動、圖表進場動畫、點獎盃灑花瓣、星星滑鼠尾巴（左下角開關）；v2：PinkDuckLab 入口按鈕、品牌配色、操作考百分制、p 值公式、全選／全不選、10 題測驗設計說明、身分顯示名稱）
      資料來自同資料夾的「儀表板資料.xlsx」，經「更新儀表板_雙擊我.bat」轉成 程式/data.js。
      圖表全部由本檔自行繪製，不需要網路。 -->
 <script>
@@ -209,6 +209,17 @@ section.page.on .people i{animation:pop .4s ease-out both}
 /* 動畫關掉時：全部直接顯示最終畫面 */
 html.noanim *,html.noanim *::before,html.noanim *::after{animation:none!important;transition:none!important}
 html.noanim svg .draw{stroke-dasharray:none!important;stroke-dashoffset:0!important}
+/* v3.9.3（阿澈 2026-11-06）：PinkDuckLab 入口移到右下角浮動；小鴨＋動畫、滑鼠特效開關移到上方標題列右側 */
+.pdl-portal-btn{position:fixed;right:14px;bottom:14px;top:auto;z-index:99998}
+.pdl-portal-btn::after{top:auto;bottom:calc(100% + 8px)}
+@media (max-width:520px){.pdl-portal-btn{right:14px;bottom:14px;top:auto}}
+header.top h1,header.top .sub{padding-right:0}
+.fxdock{position:absolute;right:20px;top:-8px;bottom:auto;z-index:50}
+.fxdock .duck{width:58px;height:64px}
+.fxdock button.sw{background:rgba(255,255,255,.9)}
+.duckpop{bottom:auto;top:calc(100% + 8px);color:var(--ink,#3A2E35);z-index:60}
+@media (max-width:720px){.fxdock{position:static;justify-content:flex-end;margin:-14px 0 10px}}
+@media (max-width:520px){.fxdock .duck{width:46px;height:51px}}
 </style>
 </head>
 <body>
@@ -926,6 +937,7 @@ document.addEventListener("keydown", e => { const t = e.target.closest && e.targ
 const fxDock = document.createElement("div");
 fxDock.className = "fxdock";
 document.body.appendChild(fxDock);
+{ const hw = document.querySelector("header.top .wrap"); if (hw) hw.prepend(fxDock); }  // v3.9.3：開關一排移到標題列右上
 (() => {
   const KEY = "pdl-anim-off";
   // v3.9.2（阿澈）：沒按過開關時一律預設開，不跟電腦的「減少動態效果」設定走（小狐狸的電腦都關動畫，跟著走就看不到）
@@ -997,7 +1009,7 @@ $("#tabs").addEventListener("click", e => { const b = e.target.closest("button")
 window.addEventListener("hashchange", () => show(location.hash.slice(1)));
 
 $("#sub").textContent = `資料更新：${D["產生時間"] || "—"}`;
-$("#foot").innerHTML = `病毒組教學成效儀表板 v3.9.2｜數字由「儀表板資料.xlsx」自動計算｜個人資料一律以研究代號呈現`;
+$("#foot").innerHTML = `病毒組教學成效儀表板 v3.9.3｜數字由「儀表板資料.xlsx」自動計算｜個人資料一律以研究代號呈現`;
 renderHome(); renderCPE(); renderOps(); renderVote();
 show(location.hash.slice(1) || "home");
 </script>
