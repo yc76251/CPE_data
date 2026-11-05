@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>病毒組教學成效儀表板</title>
-<!-- 病毒組教學成效儀表板 v3.9.4（2026-11-06 阿岸；v3.9.4：手機上總覽的年度時間軸被切掉、不能滑 → 改成可以左右滑，左欄固定、手機變窄，加滑動提示；v3.9.3 阿岸併回阿澈在 GitHub 上的改動；v3.9.3（阿澈）：PinkDuckLab 入口移到右下、小鴨與兩個開關移到標題列右上；v3.9.2（阿澈）：左下角 QR、動畫一律預設開；v3.9.1：右下角按鈕改成整張病毒組 logo（約 2×2 公分）；v3.9：CPE 分成驗證期、導入期兩張圖，PGY 與代訓另外用文字列出，點驗證期的身分會跳出測試重點；流程圖改成可收合；問卷可勾選合併或分開，偏好結果做成大字海報；操作考加人數說明；票選預設只顯示病毒組，要看全部請按右下角的小鴨；右下角兩個開關：滑鼠特效（預設關）、動畫（預設開）；v3.8：學生回饋改成便利貼牆（顏色角度輪流、「病毒」用螢光筆標出、滑過扶正）；v3.7：「現場教學」統一改為「傳統教學方式」；v3.6：加入小C 畫的兩張教學流程圖（第一、二張圖表之間），說明文字裡的流程改成跳到流程圖的按鈕；v3.5：修正檔頭說明跑到畫面上；v3.4：說明文字裡的教學流程（箭頭）自動畫成彩色步驟卡；v3.3：限制說明改成分梯次，文字放在 Excel「說明文字」的「梯次說明_梯次名稱」；v3.2：說明文字加 !!螢光筆!! 記號；v3.1：偏好圖長名稱換行、說明文字可用 **粗體** ==粉紅== ++放大++；v3：數字跳動、圖表進場動畫、點獎盃灑花瓣、星星滑鼠尾巴（左下角開關）；v2：PinkDuckLab 入口按鈕、品牌配色、操作考百分制、p 值公式、全選／全不選、10 題測驗設計說明、身分顯示名稱）
+<!-- 病毒組教學成效儀表板 v3.9.5（2026-11-06 阿岸；v3.9.5：票選「得票數與名次」表格加滑動提示、手機上左欄固定；滑動提示改成只有表格真的比畫面寬時才出現；v3.9.4：手機上總覽的年度時間軸被切掉、不能滑 → 改成可以左右滑，左欄固定、手機變窄，加滑動提示；v3.9.3 阿岸併回阿澈在 GitHub 上的改動；v3.9.3（阿澈）：PinkDuckLab 入口移到右下、小鴨與兩個開關移到標題列右上；v3.9.2（阿澈）：左下角 QR、動畫一律預設開；v3.9.1：右下角按鈕改成整張病毒組 logo（約 2×2 公分）；v3.9：CPE 分成驗證期、導入期兩張圖，PGY 與代訓另外用文字列出，點驗證期的身分會跳出測試重點；流程圖改成可收合；問卷可勾選合併或分開，偏好結果做成大字海報；操作考加人數說明；票選預設只顯示病毒組，要看全部請按右下角的小鴨；右下角兩個開關：滑鼠特效（預設關）、動畫（預設開）；v3.8：學生回饋改成便利貼牆（顏色角度輪流、「病毒」用螢光筆標出、滑過扶正）；v3.7：「現場教學」統一改為「傳統教學方式」；v3.6：加入小C 畫的兩張教學流程圖（第一、二張圖表之間），說明文字裡的流程改成跳到流程圖的按鈕；v3.5：修正檔頭說明跑到畫面上；v3.4：說明文字裡的教學流程（箭頭）自動畫成彩色步驟卡；v3.3：限制說明改成分梯次，文字放在 Excel「說明文字」的「梯次說明_梯次名稱」；v3.2：說明文字加 !!螢光筆!! 記號；v3.1：偏好圖長名稱換行、說明文字可用 **粗體** ==粉紅== ++放大++；v3：數字跳動、圖表進場動畫、點獎盃灑花瓣、星星滑鼠尾巴（左下角開關）；v2：PinkDuckLab 入口按鈕、品牌配色、操作考百分制、p 值公式、全選／全不選、10 題測驗設計說明、身分顯示名稱）
      資料來自同資料夾的「儀表板資料.xlsx」，經「更新儀表板_雙擊我.bat」轉成 程式/data.js。
      圖表全部由本檔自行繪製，不需要網路。 -->
 <script>
@@ -94,7 +94,8 @@ svg text{font-family:inherit}
 .note{font-size:14px;color:var(--muted);margin-top:6px}
 .tl{display:grid;gap:0;border-radius:14px;overflow:clip;border:1px solid var(--line);min-width:max-content}
 .tlhint{display:none;font-size:13.5px;color:var(--muted);margin:0 0 6px}
-@media (max-width:620px){.tl{--tlc1:118px}.tl .h.first,.tl .rh{position:sticky;left:0;z-index:1}.tl .rh{font-size:14px;padding:10px 8px;box-shadow:2px 0 4px rgba(226,85,138,.10)}.tlhint{display:block}}
+@media (max-width:620px){.tl{--tlc1:118px}.tl .h.first,.tl .rh{position:sticky;left:0;z-index:1}.tl .rh{font-size:14px;padding:10px 8px;box-shadow:2px 0 4px rgba(226,85,138,.10)}.tscroll.stick table.tb th:first-child,.tscroll.stick table.tb td:first-child{position:sticky;left:0;z-index:1;box-shadow:2px 0 4px rgba(226,85,138,.10)}.tscroll.stick table.tb td:first-child{background:#fff}}
+.tlhint.on{display:block}
 .tl .h{background:var(--pink);color:#fff;font-weight:700;padding:10px 12px;text-align:center}
 .tl .h.first{text-align:left}
 .tl .rh{background:var(--pink-xl);font-weight:700;padding:12px;display:flex;align-items:center;gap:8px}
@@ -646,8 +647,8 @@ function voteRankTable(){
   const cell = (sy, g) => { const d = VT[sy].g[g]; if (!d) return "—";
     const a = 0.12 + 0.75 * d.share / maxShare;
     return `<span style="display:inline-block;min-width:150px;padding:4px 8px;border-radius:9px;background:rgba(226,85,138,${a.toFixed(2)});color:${a > .55 ? "#fff" : "#3A2E35"};font-weight:${g === TARGET ? 800 : 400}">${d.v} 票｜${pct(d.share)}｜第 ${d.rank} 名</span>`; };
-  return table(["組別", ...voteYears.map(sy => `${sy} 學年<br><small>共 ${VT[sy].tot} 票</small>`)],
-    gs.map(g => [`<span style="color:${gColor(g)};font-weight:800">●</span> ${g === TARGET ? "<b>" + esc(g) + "</b>" : esc(g)}`, ...voteYears.map(sy => cell(sy, g))]));
+  return `<div class="tlhint">👉 左右滑動看其他學年</div>` + table(["組別", ...voteYears.map(sy => `${sy} 學年<br><small>共 ${VT[sy].tot} 票</small>`)],
+    gs.map(g => [`<span style="color:${gColor(g)};font-weight:800">●</span> ${g === TARGET ? "<b>" + esc(g) + "</b>" : esc(g)}`, ...voteYears.map(sy => cell(sy, g))])).replace('class="tscroll"', 'class="tscroll stick"');
 }
 
 /* ========== 自動結論（以報告給委員的口氣） ========== */
@@ -884,6 +885,7 @@ function renderVote(){
   $("#p-vote").innerHTML = h;
   $("#voteChips").addEventListener("click", e => { const c = e.target.closest(".chip"); if (!c) return; voteHL = c.dataset.g;
     document.querySelectorAll("#voteChips .chip").forEach(x => x.classList.toggle("hl", x.dataset.g === voteHL)); $("#voteLine").innerHTML = voteLineSVG(); });
+  updateHints();
 }
 
 /* ========== 小特效 ========== */
@@ -1006,12 +1008,18 @@ function show(p){
   if (p === "home") countUp($("#p-home"));
   if (p === "cpe") countUp($("#p-cpe"), "[data-count]");
   window.scrollTo({top: 0});
+  updateHints();
 }
+// v3.9.5：「左右滑動」提示只在表格真的比畫面寬時出現
+function updateHints(){
+  document.querySelectorAll(".tlhint").forEach(h => { const sc = h.nextElementSibling; h.classList.toggle("on", !!sc && sc.scrollWidth > sc.clientWidth + 2); });
+}
+window.addEventListener("resize", updateHints);
 $("#tabs").addEventListener("click", e => { const b = e.target.closest("button"); if (b) location.hash = b.dataset.p; });
 window.addEventListener("hashchange", () => show(location.hash.slice(1)));
 
 $("#sub").textContent = `資料更新：${D["產生時間"] || "—"}`;
-$("#foot").innerHTML = `病毒組教學成效儀表板 v3.9.4｜數字由「儀表板資料.xlsx」自動計算｜個人資料一律以研究代號呈現`;
+$("#foot").innerHTML = `病毒組教學成效儀表板 v3.9.5｜數字由「儀表板資料.xlsx」自動計算｜個人資料一律以研究代號呈現`;
 renderHome(); renderCPE(); renderOps(); renderVote();
 show(location.hash.slice(1) || "home");
 </script>
